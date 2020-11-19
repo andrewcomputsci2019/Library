@@ -1,15 +1,16 @@
 package Books;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import Books_removed.AvaibleBooks;
+
+import java.io.*;
 
 /**
  * A parser that reads a file to check what books the library has
  * @see Booklist
  */
 public class Booklist {
-    String filepath = "src\\MasterList";
+    AvaibleBooks avaibleBooks = new AvaibleBooks();
+    String filepath = "MasterList";
     public Booklist()  {
         System.out.println("entered Book list constructor ");
         try {
@@ -25,7 +26,9 @@ public class Booklist {
      * @see Booklist#FilePathTest()
      */
    private void FilePathTest() throws FileNotFoundException {
-       BufferedReader var = new BufferedReader(new FileReader(filepath));
+       InputStream is = getClass().getClassLoader().getResourceAsStream("MasterList.txt");
+       InputStreamReader inputStreamReader= new InputStreamReader(is);
+       BufferedReader var = new BufferedReader(inputStreamReader);
        String lines;
        String[] str;
        try {
@@ -40,6 +43,7 @@ public class Booklist {
                    str = lines.split(" , ");
                    System.out.println(str[0]);
                    System.out.println(str[1]);
+                   avaibleBooks.AddbookToList(str[0],str[1]);
                }
            }
            var.close();
@@ -51,6 +55,13 @@ public class Booklist {
        }
 
    }
+   public AvaibleBooks Returnhashmapobject()
+   {
+       return avaibleBooks;
+   }
+
+
+
 
    }
 

@@ -2,6 +2,10 @@ import Books.Booklist;
 import Books_removed.*;
 import User.*;
 
+import java.util.Collection;
+import java.util.Scanner;
+import java.util.function.Predicate;
+
 
 /**
  * Main class that drives the program
@@ -19,9 +23,10 @@ public class Main {
         System.out.println(" world");
         boolean exit = false;
         Userdata userdata = new Userdata(); // set up for management
-        AvaibleBooks avaibleBooks = new AvaibleBooks();
         Checked_outlist checked_outlist = new Checked_outlist();
         Booklist booklist = new Booklist();
+        AvaibleBooks avaibleBooks = new AvaibleBooks();
+        avaibleBooks=booklist.Returnhashmapobject();
         Listofusers listofusers = new Listofusers();
         while (!exit)
         {
@@ -30,10 +35,93 @@ public class Main {
             listofusers.addUserToList(userdata); // adds the userdata object to an array list
             System.out.println(listofusers.listofusers);
             System.out.println(listofusers.getListofUsersString());//prints out the list of users
-            listofusers.printFristName(0);
+            listofusers.printFristName(0); //prints out first name of the position of the array
             listofusers.printLastName(0);
             listofusers.printPassword(0);
-            exit=true;
+            System.out.println("Making new account");
+            userdata = new Userdata();
+            userdata.CreateAccount();
+            listofusers.addUserToList(userdata);
+           FindUtils var = new FindUtils();
+           Scanner input = new Scanner(System.in);
+           System.out.println("enter id to search from");
+           String str = input.nextLine();
+           Userdata account =var.sreachUserData(listofusers.listofusers, str );
+           if (account==null)
+           {
+               System.out.println("sorry we could not find an account matching id " + str);
+           }
+           else {
+               System.out.println(account);
+           }
+           addBookToList();
+           exit=true;
+        }
+
+    }
+
+    /**
+     * would be used to add books to the file to be read after next startup
+     */
+    static void addBookToList()
+    {
+        boolean exit = false;
+        while (!exit) {
+            Scanner input = new Scanner(System.in);
+            System.out.println("please enter book name");
+            String[] bookdeatils = new String[2];
+            bookdeatils[0] = input.nextLine();
+            System.out.println("please enter the isbn now");
+            bookdeatils[1]=input.nextLine();
+            System.out.println("please verify that these are the correct details:\n" +"book name = "+bookdeatils[0]+"\n"+
+                    "book's isbn = "+bookdeatils[1]+ "\nare these correct y/n");
+            String check = input.nextLine();
+            if (check.equals("y")||check.equals("Y"))
+            {
+                //todo make the writing class to add a book
+                //exits loop after adding book
+                exit=true;
+            }
+            else
+            {
+                System.out.println("please follow instruction ahead");
+            }
+        }
+
+    }
+
+    /**
+     * Used to force exit the program
+     */
+    static void forceQuit()
+
+    {
+        Runtime.getRuntime().exit(-1); //force quits the program need to make sure that file writers close
+        // going to use this if the program encounter a fatal error and needs to be shut down need to look into what happens when this encours
+        // during a file write or read
+    }
+
+
+    /**
+     * class to search an array list to find its account
+     */
+    static class FindUtils
+    {
+        /**
+         * the searching tool that use streams in order to search the given array
+         * @param col is a collection of the array ie the array is divided  into sub categories
+         * @param filter the flitter is what is used to go through the array and search
+         * @param <T> predicate stuff
+         * @return returns the userdata object
+         */
+        public  <T> T findByProperty(Collection<T> col, Predicate<T> filter) {
+            return col.stream().filter(filter).findFirst().orElse(null);
+        }
+        public Userdata sreachUserData(Collection<Userdata> listuserdata, String id)
+
+        {
+            return  findByProperty(listuserdata, userdata -> id.equals(userdata.getId()));
         }
     }
+
 }

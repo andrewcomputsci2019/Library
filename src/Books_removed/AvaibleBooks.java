@@ -14,7 +14,12 @@ public class AvaibleBooks {
         hashMap.put(name, isbn);
     }
 
-
+    @Override
+    public String toString() {
+        return "AvaibleBooks{" +
+                "hashMap=" + hashMap +
+                '}';
+    }
 }
 //todo add hashmap function for searching for book name and isbn
 

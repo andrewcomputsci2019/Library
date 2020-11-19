@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class Userdata {
     static int masterid=0;
-    private int id;
+    private String id;
     private String password;
     private String firstname;
     private String lastname;
@@ -17,7 +17,8 @@ public class Userdata {
      */
     public Userdata()
     {
-        this.id = 0;
+        this.password = null;
+        this.id =null;
     }
 
     /**
@@ -83,7 +84,7 @@ public class Userdata {
      */
     private void generateId()
     {
-        id = masterid;
+        id = String.valueOf(masterid);
         masterid++;
     }
 
@@ -100,7 +101,10 @@ public class Userdata {
     public String getPassword() {
         return this.password;
     }
-
+    public String getId()
+    {
+        return this.id;
+    }
 
 
 
