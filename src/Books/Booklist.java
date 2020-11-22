@@ -26,32 +26,37 @@ public class Booklist {
      * @see Booklist#FilePathTest()
      */
    private void FilePathTest() throws FileNotFoundException {
-       InputStream is = getClass().getClassLoader().getResourceAsStream("MasterList.txt");
-       InputStreamReader inputStreamReader= new InputStreamReader(is);
-       BufferedReader var = new BufferedReader(inputStreamReader);
-       String lines;
-       String[] str;
-       try {
-           while ((lines = var.readLine()) != null) {
-               if (lines.startsWith("***"))
-               {
-                   System.out.print("header of the file excluded!\n");
-               }
-               else {
-                   System.out.print(lines);
-                   System.out.print("\n");
-                   str = lines.split(" , ");
-                   System.out.println(str[0]);
-                   System.out.println(str[1]);
-                   avaibleBooks.AddbookToList(str[0],str[1]);
-               }
-           }
-           var.close();
-       }
-
-       catch (Exception e)
+          InputStream is = getClass().getResourceAsStream("/MasterList.txt");
+      // InputStream is = getClass().getClassLoader().getResourceAsStream("MasterList.txt");
+       if(is==null)
        {
-           throw new FileNotFoundException("file could not be found please make sure file \"MasterList\"exist");
+            throw new FileNotFoundException("MasterList was not found please make sure it is installed");
+       }
+       else {
+           InputStreamReader inputStreamReader = new InputStreamReader(is);
+           BufferedReader var = new BufferedReader(inputStreamReader);
+           int bookcount=0;
+           String lines;
+           String[] str;
+           try {
+               while ((lines = var.readLine()) != null) {
+                   if (lines.startsWith("***")) {
+                       System.out.print("header of the file excluded!\n");
+                   } else {
+                       System.out.print(lines);
+                       System.out.print("\n");
+                       str = lines.split(" , ");
+                       System.out.println(str[0]);
+                       System.out.println(str[1]);
+                       avaibleBooks.AddbookToList(str[0], str[1]);
+                       bookcount++;
+                   }
+               }
+               System.out.println("number of books in list is: "+bookcount);
+               var.close();
+           } catch (Exception e) {
+               throw new IOError(e.fillInStackTrace());
+           }
        }
 
    }

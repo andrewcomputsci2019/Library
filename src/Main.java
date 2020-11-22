@@ -69,12 +69,12 @@ public class Main {
         while (!exit) {
             Scanner input = new Scanner(System.in);
             System.out.println("please enter book name");
-            String[] bookdeatils = new String[2];
-            bookdeatils[0] = input.nextLine();
+            String[] bookdetails = new String[2];
+            bookdetails[0] = input.nextLine();
             System.out.println("please enter the isbn now");
-            bookdeatils[1]=input.nextLine();
-            System.out.println("please verify that these are the correct details:\n" +"book name = "+bookdeatils[0]+"\n"+
-                    "book's isbn = "+bookdeatils[1]+ "\nare these correct y/n");
+            bookdetails[1]=input.nextLine();
+            System.out.println("please verify that these are the correct details:\n" +"book name = "+bookdetails[0]+"\n"+
+                    "book's isbn = "+bookdetails[1]+ "\nare these correct y/n");
             String check = input.nextLine();
             if (check.equals("y")||check.equals("Y"))
             {
@@ -117,6 +117,14 @@ public class Main {
         public  <T> T findByProperty(Collection<T> col, Predicate<T> filter) {
             return col.stream().filter(filter).findFirst().orElse(null);
         }
+
+        /**
+         * This is the data collector and thing that sends the info to  findByProperty
+         * @see FindUtils#findByProperty(Collection, Predicate) 
+         * @param listuserdata the array list of users that contain the property 
+         * @param id this is the id that we want to search for in the array list
+         * @return the users data that matches the id given if non matches the id given it will return null
+         */
         public Userdata sreachUserData(Collection<Userdata> listuserdata, String id)
 
         {
