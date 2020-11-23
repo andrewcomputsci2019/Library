@@ -26,15 +26,9 @@ public class Booklist {
      * @see Booklist#FilePathTest()
      */
    private void FilePathTest() throws FileNotFoundException {
-          InputStream is = getClass().getResourceAsStream("/MasterList.txt");
-      // InputStream is = getClass().getClassLoader().getResourceAsStream("MasterList.txt");
-       if(is==null)
-       {
-            throw new FileNotFoundException("MasterList was not found please make sure it is installed");
-       }
-       else {
-           InputStreamReader inputStreamReader = new InputStreamReader(is);
-           BufferedReader var = new BufferedReader(inputStreamReader);
+        //  InputStream is = getClass().getResourceAsStream("/MasterList.txt"); if file was in jar
+      // InputStream is = getClass().getClassLoader().getResourceAsStream("MasterList.txt"); if file was in jar
+           BufferedReader var = new BufferedReader(new FileReader("resources/MasterList.txt"));
            int bookcount=0;
            String lines;
            String[] str;
@@ -59,7 +53,6 @@ public class Booklist {
            }
        }
 
-   }
    public AvaibleBooks Returnhashmapobject()
    {
        return avaibleBooks;
