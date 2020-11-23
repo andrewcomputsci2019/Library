@@ -30,7 +30,7 @@ public class AccountSaver {
         bw.write("***This file will write the user data in the following id , password , fname , pname ***\n");// don't do this in an actual application hackers would love you a lot actually
         for(Userdata users: this.list)
         {
-            bw.write(users.getId()+" , "+users.getPassword()+ " , "+users.getFirstName()+" , "+users.getPassword()+"\n");
+            bw.write(users.getId()+" , "+users.getPassword()+ " , "+users.getFirstName()+" , "+users.getPassword()+"\n"); //plain text storage is super dangerous
         }
         bw.close();
     }
