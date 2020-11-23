@@ -58,7 +58,7 @@ public class Main {
            addBookToList();
            exit=true;
         }
-        AccountSaver var = new AccountSaver();
+        AccountSaver var = new AccountSaver(listofusers.getListofUsersArray());
 
     }
 

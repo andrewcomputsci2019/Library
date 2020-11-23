@@ -13,11 +13,12 @@ public class AccountSaver {
 
     public AccountSaver() throws IOException // this will be for startup this will
     {
-        SavelistofUsers();
+
     }
-    public AccountSaver(ArrayList<Userdata> listpass) // this is used for saving the data
+    public AccountSaver(ArrayList<Userdata> listpass) throws IOException // this is used for saving the data
     {
         this.list = listpass;
+        SavelistofUsers();
 
     }
     private void SavelistofUsers() throws IOException {
@@ -26,11 +27,12 @@ public class AccountSaver {
         String string = currentpath.toAbsolutePath().toString();
         System.out.println(string);
         BufferedWriter bw = new BufferedWriter(new FileWriter("resources/UserList"));
-        bw.write("***This file will write the user data in the following id , password , fname , pname ***");// don't do this in an actual application hackers would love you a lot actually
+        bw.write("***This file will write the user data in the following id , password , fname , pname ***\n");// don't do this in an actual application hackers would love you a lot actually
         for(Userdata users: this.list)
         {
             bw.write(users.getId()+" , "+users.getPassword()+ " , "+users.getFirstName()+" , "+users.getPassword()+"\n");
         }
+        bw.close();
     }
 
 }
