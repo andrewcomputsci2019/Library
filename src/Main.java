@@ -27,12 +27,26 @@ public class Main {
         System.out.print("hello");
         System.out.println(" world");
         boolean exit = false;
+        AccountSaver start = new AccountSaver();
+
         Userdata userdata = new Userdata(); // set up for management
         Checked_outlist checked_outlist = new Checked_outlist();
         Booklist booklist = new Booklist();
         AvaibleBooks avaibleBooks = new AvaibleBooks();
         avaibleBooks=booklist.Returnhashmapobject();
         Listofusers listofusers = new Listofusers();
+        if(start.nullCheck)
+        {
+            System.out.println("no previous users detected");
+        }
+        else
+        {
+            listofusers.listofusers=start.getList();
+            String id = listofusers.listofusers.get(listofusers.listofusers.size()-1).getId();
+            userdata.setMasterid(id);
+        }
+
+
         while (!exit)
         {
             System.out.println("would you like to view our books");

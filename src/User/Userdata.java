@@ -128,6 +128,11 @@ public class Userdata {
     {
         return this.id;
     }
+    public void setMasterid(String highestid)
+    {
+        masterid = Integer.parseInt(highestid);
+        masterid++;
+    }
 
 
 
