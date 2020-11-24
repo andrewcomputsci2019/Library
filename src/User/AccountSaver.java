@@ -22,7 +22,7 @@ public class AccountSaver {
 
     /**
      * writes out the arraylist into a file for for feature starts
-     * @throws IOException
+     * @throws IOException if an error occurs when reading the file
      */
     private void SavelistofUsers() throws IOException {
         Path currentpath = Paths.get("");
