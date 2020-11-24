@@ -53,7 +53,11 @@ public class Booklist {
            }
        }
 
-   public AvaibleBooks Returnhashmapobject()
+    /**
+     *
+     * @return a hash map containing a set of books
+     */
+    public AvaibleBooks Returnhashmapobject()
    {
        return avaibleBooks;
    }

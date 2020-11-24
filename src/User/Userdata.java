@@ -1,5 +1,6 @@
 package User;
 import java.util.Scanner;
+import User.*;
 
 /**
  * Userdata creates an object that holds an id,password,firstname, and a last name
@@ -32,6 +33,15 @@ public class Userdata {
     {
         return String.format(id+" "+password+" "+firstname+" "+lastname);
     }
+
+    /**
+     * used for the startup of the program
+     * @see AccountSaver
+     * @param id just and id passed from AccountSaver
+     * @param password a string passed from the AccountSaver
+     * @param firstname a string passed from The AccountSaver
+     * @param lastname a String passed From the AccountSaver
+     */
     public void CreateAccount(String id ,String password, String firstname, String lastname)
     {
         this.lastname=lastname;

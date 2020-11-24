@@ -11,7 +11,7 @@ public class AccountSaver {
 
     public AccountSaver() throws IOException // this will be for startup this will run
     {
-
+            accountReader();
     }
     public AccountSaver(ArrayList<Userdata> listpass) throws IOException // this is used for saving the data
     {
@@ -19,6 +19,11 @@ public class AccountSaver {
         SavelistofUsers();
 
     }
+
+    /**
+     * writes out the arraylist into a file for for feature starts
+     * @throws IOException
+     */
     private void SavelistofUsers() throws IOException {
         Path currentpath = Paths.get("");
         String string = currentpath.toAbsolutePath().toString();
@@ -31,6 +36,11 @@ public class AccountSaver {
         }
         bw.close();
     }
+
+    /**
+     * Reads the userlist file and sets up an array list to be ready for a return back to the main
+     * @throws IOException if an error occurs in the file io operation
+     */
     private void accountReader() throws IOException {
         Userdata userdata = new Userdata();
         BufferedReader reader = new BufferedReader(new FileReader("resources/UserList"));
