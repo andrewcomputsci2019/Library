@@ -18,6 +18,8 @@ public class Userdata {
     public Userdata()
     {
         this.password = null;
+        this.firstname= null;
+        this.lastname=null;
         this.id =null;
     }
 
@@ -29,6 +31,13 @@ public class Userdata {
     public String toString()
     {
         return String.format(id+" "+password+" "+firstname+" "+lastname);
+    }
+    public void CreateAccount(String id ,String password, String firstname, String lastname)
+    {
+        this.lastname=lastname;
+        this.firstname=firstname;
+        this.id=id;
+        this.password=password;
     }
 
     /**

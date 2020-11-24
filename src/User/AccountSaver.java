@@ -1,17 +1,15 @@
 package User;
 import User.Userdata;
+
+import java.io.*;
 import java.nio.file.Path;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class AccountSaver {
     private ArrayList<Userdata> list;
 
-    public AccountSaver() throws IOException // this will be for startup this will
+    public AccountSaver() throws IOException // this will be for startup this will run
     {
 
     }
@@ -22,7 +20,6 @@ public class AccountSaver {
 
     }
     private void SavelistofUsers() throws IOException {
-
         Path currentpath = Paths.get("");
         String string = currentpath.toAbsolutePath().toString();
         System.out.println(string);
@@ -33,6 +30,29 @@ public class AccountSaver {
             bw.write(users.getId()+" , "+users.getPassword()+ " , "+users.getFirstName()+" , "+users.getPassword()+"\n"); //plain text storage is super dangerous
         }
         bw.close();
+    }
+    private void accountReader() throws IOException {
+        Userdata userdata = new Userdata();
+        BufferedReader reader = new BufferedReader(new FileReader("resources/UserList"));
+        int count = 0;
+        String lines;
+        while((lines=reader.readLine())!=null)
+        {
+
+            if(lines.startsWith("***"))
+            {
+                System.out.println("Header of file has been skip");
+            }
+            else
+            System.out.println(lines);
+            String[] str = lines.split(" , ");
+            for (String s : str) {
+                System.out.println(s);
+            }
+
+
+        }
+
     }
 
 }
