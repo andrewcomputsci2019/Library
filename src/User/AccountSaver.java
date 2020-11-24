@@ -49,7 +49,8 @@ public class AccountSaver {
             for (String s : str) {
                 System.out.println(s);
             }
-
+            userdata.CreateAccount(str[0],str[1],str[2],str[3]);
+            this.list.add(userdata);
 
         }
 
