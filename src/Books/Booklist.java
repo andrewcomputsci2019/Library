@@ -14,7 +14,7 @@ import java.io.*;
  */
 public class Booklist {
     AvaibleBooks avaibleBooks = new AvaibleBooks();
-    String filepath = "MasterList";
+
     public Booklist()  {
         System.out.println("entered Book list constructor ");
         try {

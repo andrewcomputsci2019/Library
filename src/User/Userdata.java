@@ -3,8 +3,8 @@
  */
 
 package User;
+
 import java.util.Scanner;
-import User.*;
 
 /**
  * Userdata creates an object that holds an id,password,firstname, and a last name
@@ -35,7 +35,7 @@ public class Userdata {
     @Override
     public String toString()
     {
-        return String.format(id+" "+password+" "+firstname+" "+lastname);
+        return id + " " + password + " " + firstname + " " + lastname;
     }
 
     /**
