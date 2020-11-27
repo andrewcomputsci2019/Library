@@ -58,6 +58,7 @@ public class BookFile {
 
 
         }
+        System.out.println("The number of books in list is "+count);
     }
 
 }
