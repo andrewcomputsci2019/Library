@@ -114,7 +114,6 @@ public class Main {
      * Used to force exit the program
      */
     static void forceQuit()
-
     {
         Runtime.getRuntime().exit(-1); //force quits the program need to make sure that file writers close
         // going to use this if the program encounter a fatal error and needs to be shut down need to look into what happens when this encours

@@ -9,13 +9,14 @@ import java.util.Map;
 
 public class BookFile {
     private HashMap<String,String> stringStringHashMap;
-    public BookFile(HashMap<String, String> hashMap)//shutdown
+    public BookFile(HashMap<String, String> hashMap) throws IOException//shutdown
     {
         this.stringStringHashMap=hashMap;
+        saveBookFile();
     }
-    public BookFile()//startup
+    public BookFile() throws IOException//startup
     {
-
+        readBookFile();
     }
     private void saveBookFile() throws IOException//shutdown file writer
     {
@@ -60,5 +61,10 @@ public class BookFile {
         }
         System.out.println("The number of books in list is "+count);
     }
+    public HashMap<String, String> getStringStringHashMap()
+    {
+        return this.stringStringHashMap;
+    }
+
 
 }
