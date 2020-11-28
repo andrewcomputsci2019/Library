@@ -8,17 +8,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class controls what books are check out and to who
+ */
 public class Checked_outlist {
     public HashMap<String, String> stringHashMap; // could use a 3d array instead for isbn,bookname,user id but i think a hashmap would be better
     public Checked_outlist()
     {
         System.out.println("empty for now");
     }
+
+    /**
+     * this metod manges a hash map that checks what books have been checked out or not
+     * @param userid the users id
+     * @param book the name of the book
+     */
     public void addBookToCheckout(String userid,String book)
     {
             this.stringHashMap.put(book,userid);
     }
-    public ArrayList<String> SearchListid(String id)
+
+    /**
+     * this is used to see what books an individual may have check out to him or her
+     * @param id used to search through the hashmap to find the books associated with that value
+     * @return an array list of book names
+     */
+    public ArrayList<String> SearchListid(String id) // chose an array list due to expandable memory so i don't have to iterate twice
     {
         ArrayList<String> arrayList= new ArrayList<>();
         if(stringHashMap.containsValue(id))
@@ -37,6 +52,12 @@ public class Checked_outlist {
         }
         return arrayList;
     }
+
+    /**
+     *
+     * @param book string name of the book
+     * @return the id of the users who checked out the book
+     */
     public String SearchListBook(String book)
     {
             if(this.stringHashMap.containsKey(book))

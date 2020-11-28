@@ -28,11 +28,10 @@ public class Main {
         System.out.println(" world");
         boolean exit = false;
         AccountSaver start = new AccountSaver();
-
         Userdata userdata = new Userdata(); // set up for management
         Checked_outlist checked_outlist = new Checked_outlist();
         Booklist booklist = new Booklist();
-        AvaibleBooks avaibleBooks = new AvaibleBooks();
+        AvaibleBooks avaibleBooks;
         avaibleBooks=booklist.Returnhashmapobject();
         Listofusers listofusers = new Listofusers();
         if(start.nullCheck)
@@ -77,7 +76,7 @@ public class Main {
            avaibleBooks.AddbookToList(strings[0],strings[1]);
            exit=true;
         }
-        AccountSaver var = new AccountSaver(listofusers.getListofUsersArray());
+        new AccountSaver(listofusers.getListofUsersArray());
 
     }
 
