@@ -63,6 +63,10 @@ public class AccountSaver {
                 System.out.println("Header of file has been skip");
             }
             else {
+                if(lines.length()==0)
+                {
+                    break;
+                }
                 System.out.println(lines);
                 String[] str = lines.split(" , ");
                 for (String s : str) {
