@@ -73,7 +73,8 @@ public class Main {
            else {
                System.out.println(account);
            }
-           addBookToList();
+           String[] strings = addBookToList();
+           avaibleBooks.AddbookToList(strings[0],strings[1]);
            exit=true;
         }
         AccountSaver var = new AccountSaver(listofusers.getListofUsersArray());
@@ -82,11 +83,11 @@ public class Main {
 
     /**
      * would be used to add books to the file to be read after next startup
+     * @return string array
      */
-    static void addBookToList()
+    static String[] addBookToList()
     {
-        boolean exit = false;
-        while (!exit) {
+        while (true) {
             Scanner input = new Scanner(System.in);
             System.out.println("please enter book name");
             String[] bookdetails = new String[2];
@@ -98,9 +99,7 @@ public class Main {
             String check = input.nextLine();
             if (check.equals("y")||check.equals("Y"))
             {
-                //todo make the writing class to add a book
-                //exits loop after adding book
-                exit=true;
+                return bookdetails;
             }
             else
             {
