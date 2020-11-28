@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"Books"},{"l":"Books_removed"},{"l":"User"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"BookFileIO"},{"l":"Books"},{"l":"Books_removed"},{"l":"User"}]
