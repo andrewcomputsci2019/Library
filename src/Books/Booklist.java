@@ -56,7 +56,6 @@ public class Booklist {
                throw new IOError(e.fillInStackTrace());
            }
        }
-
     /**
      *
      * @return a hash map containing a set of books

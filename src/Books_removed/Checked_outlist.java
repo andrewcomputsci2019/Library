@@ -4,8 +4,13 @@
 
 package Books_removed;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,6 +71,35 @@ public class Checked_outlist {
             }
             else return null;
     }
+    public void closeCheckedOutList() throws IOException {
+        File file = new File("resources/CheckedOutlist.txt");
+        if(file.createNewFile())
+        {
+            System.out.println("file created named:"+file+"\n file path is "+file.getAbsolutePath());
+        }
+        else
+        {
+            System.out.println("File already exist at: "+file.getAbsolutePath());
+        }
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+        bufferedWriter.write("*** this file contains information about checked out books ***");
+        bufferedWriter.write("*** string format book , user id");
+        int sum =  this.stringHashMap.size();
+        int count = 0 ;
+        for (Map.Entry<String, String> e : this.stringHashMap.entrySet())
+        {
+            bufferedWriter.write(e.getKey()+" , "+e.getValue()+"\n");
+            count++;
+        }
+        System.out.println("Total size of hashmap is: "+sum+"\n number of lines written to file is: "+count+"\n difference between size an lines written is " + (sum - count));
+
+    }
+    public void Startup()
+    {
+        // would be file reader class
+    }
+
+
 
 
 
