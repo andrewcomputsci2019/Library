@@ -25,6 +25,10 @@ public class AvaibleBooks {
                 "hashMap=" + hashMap +
                 '}';
     }
+    /* public void removeBookFromMap()
+   {   add stuff in here
+         }
+     */
 }
 //todo add hashmap function for searching for book name and isbn
 

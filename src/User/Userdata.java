@@ -18,7 +18,7 @@ public class Userdata {
     private String lastname;
 
     /**
-     * Userdata constructor is only here to initialize the id to 0
+     * Userdata constructor is only here to set values to null
      */
     public Userdata()
     {
