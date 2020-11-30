@@ -4,10 +4,7 @@
 
 package Books_removed;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +80,7 @@ public class Checked_outlist {
         }
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
         bufferedWriter.write("*** this file contains information about checked out books ***");
-        bufferedWriter.write("*** string format book , user id");
+        bufferedWriter.write("*** string format book , user id ***");
         int sum =  this.stringHashMap.size();
         int count = 0 ;
         for (Map.Entry<String, String> e : this.stringHashMap.entrySet())
@@ -91,12 +88,45 @@ public class Checked_outlist {
             bufferedWriter.write(e.getKey()+" , "+e.getValue()+"\n");
             count++;
         }
-        System.out.println("Total size of hashmap is: "+sum+"\n number of lines written to file is: "+count+"\n difference between size an lines written is " + (sum - count));
+        System.out.println("Total size of hashmap is: "+sum+"\nnumber of lines written to file is: "+count+"\ndifference between size an lines written is " + (sum - count));
 
     }
-    public void Startup()
-    {
+    public void Startup() throws IOException {
         // would be file reader class
+        File file = new File("resources/CheckedOutlist.txt");
+        if(file.exists())
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String lines;
+            int count = 0;
+            while ((lines = bufferedReader.readLine())!=null)
+            {
+                if(lines.startsWith("***")||lines.length()==0)
+                {
+                    System.out.println("File header skipped or line isnt longer than 0 characters");
+                    break;
+                }
+                else
+                {
+                    count++;
+                    String[] str = lines.split(" , ");
+                    for (String string : str)
+                    {
+                        System.out.println(string);
+                    }
+                    addBookToCheckout(str[0],str[1]);
+                    System.out.println("User: "+str[1]+"\n"+"book: "+str[0]+"\nhave been added to the hashmap");
+
+                }
+
+            }
+            System.out.println("total number of entries added to hash map is "+count);
+        }
+        else
+        {
+            System.out.println("File does not exist");
+        }
+
     }
 
 
