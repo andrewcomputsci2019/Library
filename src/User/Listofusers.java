@@ -55,6 +55,12 @@ public ArrayList<Userdata> listofusers;
         listofusers.get(position).getPassword()
         );
     }
+    public void removeUserFromList(String id)
+    {
+        listofusers.removeIf(userdata -> userdata.getId().equals(id));
+        System.out.println("user by "+id+" has been removed from list");
+    }
+
 
 
 

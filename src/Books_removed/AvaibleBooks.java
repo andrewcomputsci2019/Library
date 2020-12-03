@@ -5,6 +5,7 @@
 package Books_removed;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class AvaibleBooks {
     private HashMap<String, String> hashMap = new HashMap<>();
@@ -25,10 +26,27 @@ public class AvaibleBooks {
                 "hashMap=" + hashMap +
                 '}';
     }
-    /* public void removeBookFromMap()
-   {   add stuff in here
-         }
-     */
+     public void removeBookFromMap(String bookname)
+   {
+       hashMap.remove(bookname);
+       if(hashMap.containsKey(bookname))
+       {
+           System.out.println("either two instances of the book name "+bookname+" exist or the key has failed to be removed");
+       }
+
+   }
+   public String getValueFromKey(String bookname) {
+       for (Map.Entry<String,String> entry: hashMap.entrySet())
+       {
+           if (entry.getKey().equals(bookname))
+           {
+               return entry.getValue();
+           }
+       }
+       return null;
+   }
+
+
 }
 //todo add hashmap function for searching for book name and isbn
 
