@@ -9,8 +9,9 @@ import Books_removed.AvaibleBooks;
 import java.io.*;
 
 /**
+ * @deprecated not used after BookFIle
  * A parser that reads a file to check what books the library has
- * @see Booklist
+ * @see BookFileIO.BookFile
  */
 public class Booklist {
     AvaibleBooks avaibleBooks = new AvaibleBooks();
