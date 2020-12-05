@@ -2,7 +2,8 @@
  * Copyright (c) 2020 Feel free to edit this project in any way but you must credit me in your works a simple comment or side note will work just fine have fun.
  */
 
-import Books.Booklist;
+import BookFileIO.BookFile;
+
 import Books_removed.*;
 import User.*;
 
@@ -15,7 +16,7 @@ import java.util.function.Predicate;
 /**
  * Main class that drives the program
  * @author Andrew Pegg
- * @version .15
+ * @version .160
  * @see Main
  */
 /*
@@ -30,9 +31,9 @@ public class Main {
         AccountSaver start = new AccountSaver();
         Userdata userdata = new Userdata(); // set up for management
         Checked_outlist checked_outlist = new Checked_outlist();
-        Booklist booklist = new Booklist();
-        AvaibleBooks avaibleBooks;
-        avaibleBooks=booklist.Returnhashmapobject();
+        BookFile bookFile = new BookFile();
+        AvaibleBooks avaibleBooks = new AvaibleBooks();
+        avaibleBooks.setHashMap(bookFile.getStringStringHashMap());
         Listofusers listofusers = new Listofusers();
         if(start.nullCheck)
         {

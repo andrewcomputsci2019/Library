@@ -14,8 +14,14 @@ public class BookFile {
         this.stringStringHashMap=hashMap;
         saveBookFile();
     }
+
+    /**
+     * for start up
+     * @throws IOException
+     */
     public BookFile() throws IOException//startup
     {
+        this.stringStringHashMap = new HashMap<>();
         readBookFile();
     }
     private void saveBookFile() throws IOException//shutdown file writer
@@ -33,8 +39,8 @@ public class BookFile {
 
         }
     }
-    private void readBookFile() throws IOException {
-        File file = new File("resources/MasterList");
+    private void readBookFile() throws IOException { //file reader for startup
+        File file = new File("resources/MasterList.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         int count=0;
         String lines;
@@ -61,7 +67,7 @@ public class BookFile {
         }
         System.out.println("The number of books in list is "+count);
     }
-    public HashMap<String, String> getStringStringHashMap()
+    public HashMap<String, String> getStringStringHashMap() //used to get hashmap at the end of startup
     {
         return this.stringStringHashMap;
     }

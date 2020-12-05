@@ -68,7 +68,7 @@ public class Checked_outlist {
             }
             else return null;
     }
-    public void closeCheckedOutList() throws IOException {
+    public void closeCheckedOutList() throws IOException { //shutdown
         File file = new File("resources/CheckedOutlist.txt");
         if(file.createNewFile())
         {
