@@ -7,7 +7,7 @@ package Main;import BookFileIO.BookFile;
 import Books_removed.*;
 import User.*;
 
-
+import LoginStuff.login;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Scanner;
@@ -80,6 +80,8 @@ public class Main {
         }
         new AccountSaver(listofusers.getListofUsersArray());
         boolean newexit = false;
+        boolean logincheck= false;
+        int index=0;
         while(!newexit)
         {
             System.out.println("hello and welcome to book-sim");
@@ -89,7 +91,7 @@ public class Main {
             System.out.println("4: you can get a list of the books that have been checked out");
             System.out.println("5: you can sign out of the program");
             System.out.println("6: you can quit the program");
-            System.out.println("7: help will describe what everything does");
+            System.out.println("7: help, will try to describe what everything does");
             Scanner scanner = new Scanner(System.in);
             int x = scanner.nextInt();
             switch (x)
@@ -101,13 +103,34 @@ public class Main {
                 case 2:
                     System.out.println("books that can be check out are: "+avaibleBooks); break;
                 case 3:
-                    System.out.println("not ready yet need to add a login in method");
+                    if (logincheck) {
+                        boolean check = false;
+                        while (!check) {
+                            scanner = new Scanner(System.in);
+                            System.out.println("enter username");
+                            String username = scanner.nextLine();
+                            System.out.println("enter password");
+                            String password = scanner.nextLine();
+                            login login = new login();
+                            do {
+                                check = login.Login(listofusers.getListofUsersArray(), username, password);
+                            } while (!check);
+                            logincheck = true;
+                            index = login.index;
+
+                        }
+                    }
+                    else
+                    {
+                       System.out.println(listofusers.getUserData(index));
+                    }
                     break;
                 case 4:
                     System.out.println("the books that have been checked are:"+ checked_outlist);
                     break;
                 case 5:
-                    System.out.println("has not been implemented yet");
+                    logincheck= false;
+                    System.out.println("you have been logged out");
                     break;
                 case 6: newexit = true; break;
                 case 7: // dont care to implement yet

@@ -60,6 +60,10 @@ public ArrayList<Userdata> listofusers;
         listofusers.removeIf(userdata -> userdata.getId().equals(id));
         System.out.println("user by "+id+" has been removed from list");
     }
+    public Userdata getUserData(int index)
+    {
+       return listofusers.get(index);
+    }
 
 
 
