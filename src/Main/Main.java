@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Feel free to edit this project in any way but you must credit me in your works a simple comment or side note will work just fine have fun.
  */
 
-import BookFileIO.BookFile;
+package Main;import BookFileIO.BookFile;
 
 import Books_removed.*;
 import User.*;
@@ -15,7 +15,7 @@ import java.util.function.Predicate;
 
 
 /**
- * Main class that drives the program
+ * Main.Main class that drives the program
  * @author Andrew Pegg
  * @version .160
  * @see Main
