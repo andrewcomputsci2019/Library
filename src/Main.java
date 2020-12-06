@@ -7,6 +7,7 @@ import BookFileIO.BookFile;
 import Books_removed.*;
 import User.*;
 
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Scanner;
@@ -78,7 +79,43 @@ public class Main {
            exit=true;
         }
         new AccountSaver(listofusers.getListofUsersArray());
+        boolean newexit = false;
+        while(!newexit)
+        {
+            System.out.println("hello and welcome to book-sim");
+            System.out.println("1: you can view all books in the library");
+            System.out.println("2: you can view all books that are able to be checked out");
+            System.out.println("3: you can get your user details");
+            System.out.println("4: you can get a list of the books that have been checked out");
+            System.out.println("5: you can sign out of the program");
+            System.out.println("6: you can quit the program");
+            Scanner scanner = new Scanner(System.in);
+            int x = scanner.nextInt();
+            switch (x)
+            {
+                case 1:
+                    System.out.println(avaibleBooks); //tostrings will deal with this
+                    System.out.println(checked_outlist);//same as above
+                    break;
+                case 2:
+                    System.out.println("books that can be check out are: "+avaibleBooks); break;
+                case 3:
+                    System.out.println("not ready yet need to add a login in method");
+                    break;
+                case 4:
+                    System.out.println("the books that have been checked are:"+ checked_outlist);
+                    break;
+                case 5:
+                    System.out.println("has not been implemented yet");
+                    break;
+                case 6: newexit = true; break;
+                case 7: // dont care to implement yet
+                            break;
+                default: System.out.println("Unknown response use 7 to get a list of help commands");
 
+            }
+
+        }
     }
 
     /**
