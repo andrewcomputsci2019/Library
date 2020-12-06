@@ -89,6 +89,7 @@ public class Main {
             System.out.println("4: you can get a list of the books that have been checked out");
             System.out.println("5: you can sign out of the program");
             System.out.println("6: you can quit the program");
+            System.out.println("7: help will describe what everything does");
             Scanner scanner = new Scanner(System.in);
             int x = scanner.nextInt();
             switch (x)
