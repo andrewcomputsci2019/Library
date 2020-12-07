@@ -47,7 +47,37 @@ public class Main {
             userdata.setMasterid(id);
         }
 
-
+      /*  while (!exit)
+        {
+            System.out.println("would you like to view our books");
+            userdata.CreateAccount();
+            listofusers.addUserToList(userdata); // adds the userdata object to an array list
+            System.out.println(listofusers.listofusers);
+            System.out.println(listofusers.getListofUsersString());//prints out the list of users
+            listofusers.printFristName(0); //prints out first name of the position of the array
+            listofusers.printLastName(0);
+            listofusers.printPassword(0);
+            System.out.println("Making new account");
+            userdata = new Userdata();
+            userdata.CreateAccount();
+            listofusers.addUserToList(userdata);
+            FindUtils var = new FindUtils();
+            Scanner input = new Scanner(System.in);
+            System.out.println("enter id to search from");
+            String str = input.nextLine();
+            Userdata account =var.sreachUserData(listofusers.listofusers, str );
+            if (account==null)
+            {
+                System.out.println("sorry we could not find an account matching id " + str);
+            }
+            else {
+                System.out.println(account);
+            }
+            String[] strings = addBookToList();
+            avaibleBooks.AddbookToList(strings[0],strings[1]);
+            exit=true;
+        }
+        new AccountSaver(listofusers.getListofUsersArray());*/
         boolean newexit = false;
         boolean logincheck= false;
         int index=0;
