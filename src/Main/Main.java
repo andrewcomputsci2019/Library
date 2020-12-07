@@ -48,37 +48,6 @@ public class Main {
         }
 
 
-        while (!exit)
-        {
-            System.out.println("would you like to view our books");
-            userdata.CreateAccount();
-            listofusers.addUserToList(userdata); // adds the userdata object to an array list
-            System.out.println(listofusers.listofusers);
-            System.out.println(listofusers.getListofUsersString());//prints out the list of users
-            listofusers.printFristName(0); //prints out first name of the position of the array
-            listofusers.printLastName(0);
-            listofusers.printPassword(0);
-            System.out.println("Making new account");
-            userdata = new Userdata();
-            userdata.CreateAccount();
-            listofusers.addUserToList(userdata);
-           FindUtils var = new FindUtils();
-           Scanner input = new Scanner(System.in);
-           System.out.println("enter id to search from");
-           String str = input.nextLine();
-           Userdata account =var.sreachUserData(listofusers.listofusers, str );
-           if (account==null)
-           {
-               System.out.println("sorry we could not find an account matching id " + str);
-           }
-           else {
-               System.out.println(account);
-           }
-           String[] strings = addBookToList();
-           avaibleBooks.AddbookToList(strings[0],strings[1]);
-           exit=true;
-        }
-        new AccountSaver(listofusers.getListofUsersArray());
         boolean newexit = false;
         boolean logincheck= false;
         int index=0;
@@ -93,7 +62,25 @@ public class Main {
             System.out.println("6: you can quit the program");
             System.out.println("7: help, will try to describe what everything does");
             Scanner scanner = new Scanner(System.in);
-            int x = scanner.nextInt();
+            int x;
+            if (scanner.hasNextInt())
+            {
+                x=scanner.nextInt();
+            }
+            else
+            {
+                scanner.nextLine();
+                while(true) {
+                    System.out.println("please enter a integer value");
+                    if (scanner.hasNextInt())
+                    {
+                        x= scanner.nextInt();
+                        break;
+                    }
+                    scanner.nextLine();
+                }
+            }
+
             switch (x)
             {
                 case 1:
@@ -135,7 +122,7 @@ public class Main {
                 case 6: newexit = true; break;
                 case 7: // dont care to implement yet
                             break;
-                default: System.out.println("Unknown response use 7 to get a list of help commands");
+                default: System.out.println("Unknown response use 7 to get a list of  commands");
 
             }
 
