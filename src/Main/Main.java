@@ -88,9 +88,10 @@ public class Main {
             System.out.println("2: you can view all books that are able to be checked out");
             System.out.println("3: you can get your user details");
             System.out.println("4: you can get a list of the books that have been checked out");
-            System.out.println("5: you can sign out of the program");
-            System.out.println("6: you can quit the program");
-            System.out.println("7: help, will try to describe what everything does");
+            System.out.println("5: you can create an account");
+            System.out.println("6: you can sign out of the program");
+            System.out.println("7: you can quit the program");
+            System.out.println("8: help, will try to describe what everything does");
             Scanner scanner = new Scanner(System.in);
             int x;
             if (scanner.hasNextInt())
@@ -120,7 +121,7 @@ public class Main {
                 case 2:
                     System.out.println("books that can be check out are: "+avaibleBooks); break;
                 case 3:
-                    if (logincheck) {
+                    if (!logincheck) {
                         boolean check = false;
                         while (!check) {
                             scanner = new Scanner(System.in);
@@ -129,12 +130,10 @@ public class Main {
                             System.out.println("enter password");
                             String password = scanner.nextLine();
                             login login = new login();
-                            do {
-                                check = login.Login(listofusers.getListofUsersArray(), username, password);
-                            } while (!check);
+                            check = login.Login(listofusers.getListofUsersArray(), username, password);
                             logincheck = true;
                             index = login.index;
-
+                            System.out.println(listofusers.getUserData(index));
                         }
                     }
                     else
@@ -145,12 +144,17 @@ public class Main {
                 case 4:
                     System.out.println("the books that have been checked are:"+ checked_outlist);
                     break;
-                case 5:
+                case 5:  userdata.CreateAccount();
+                        listofusers.addUserToList(userdata);
+                        userdata = new Userdata();
+                        break;
+
+                case 6:
                     logincheck= false;
                     System.out.println("you have been logged out");
                     break;
-                case 6: newexit = true; break;
-                case 7: // dont care to implement yet
+                case 7: newexit = true; break;
+                case 8: // dont care to implement yet
                             break;
                 default: System.out.println("Unknown response use 7 to get a list of  commands");
 
