@@ -84,14 +84,16 @@ public class Main {
         while(!newexit)
         {
             System.out.println("hello and welcome to book-sim");
+            System.out.println("0:clears out terminal");
             System.out.println("1: you can view all books in the library");
             System.out.println("2: you can view all books that are able to be checked out");
-            System.out.println("3: you can get your user details");
+            System.out.println("3: you can get your user details/sign in");
             System.out.println("4: you can get a list of the books that have been checked out");
             System.out.println("5: you can create an account");
             System.out.println("6: you can sign out of the program");
             System.out.println("7: you can quit the program");
-            System.out.println("8: help, will try to describe what everything does");
+            System.out.println("8: you can search user account by name or id");
+            System.out.println("9: help, will try to describe what everything does");
             Scanner scanner = new Scanner(System.in);
             int x;
             if (scanner.hasNextInt())
@@ -114,6 +116,8 @@ public class Main {
 
             switch (x)
             {
+                case 0: System.out.println("\033[H\033[2J");
+                        System.out.flush(); break;
                 case 1:
                     System.out.println(avaibleBooks); //tostrings will deal with this
                     System.out.println(checked_outlist);//same as above
@@ -127,12 +131,19 @@ public class Main {
                             scanner = new Scanner(System.in);
                             System.out.println("enter username");
                             String username = scanner.nextLine();
+                            if (username.equals("BREAK"))
+                                break;
                             System.out.println("enter password");
                             String password = scanner.nextLine();
                             login login = new login();
                             check = login.Login(listofusers.getListofUsersArray(), username, password);
-                            logincheck = true;
-                            index = login.index;
+                            if(check)
+                            {
+                                logincheck = true;
+                                index = login.index;
+                            }
+                            else
+                                System.out.println("Failed login make sure you enter password and username correctly if.\n if you can not remember your password or username please type in BREAK for username");
                             System.out.println(listofusers.getUserData(index));
                         }
                     }
@@ -154,9 +165,52 @@ public class Main {
                     System.out.println("you have been logged out");
                     break;
                 case 7: newexit = true; break;
-                case 8: // dont care to implement yet
+                case 8:
+                    System.out.println("enter 1 to search by id\n type 2 to use username to search");
+                    Userdata lookup;
+                    int select;
+                    String filer;
+                    FindUtils findUtils = new FindUtils();
+                            while (true) {
+                                if (scanner.hasNextInt()) {
+                                    select = scanner.nextInt();
+                                    break;
+                                } else {
+                                    System.out.println("please enter a valid input");
+                                    scanner.nextLine();
+                                }
+                            }
+                    switch (select) {
+                        case 1 -> {
+                            System.out.println("please enter an id to search");
+                            filer = scanner.nextLine();
+                            lookup = findUtils.sreachUserData(listofusers.listofusers,filer);
+                            if (lookup == null) {
+                                System.out.println("sorry no user was found in search");
+                            }
+                            else
+                            {
+                                System.out.println("account found\n"+lookup);
+                            }
+                        }
+                        case 2 -> {
+                            System.out.println("please enter a username to search");
+                            filer = scanner.nextLine();
+                            lookup = findUtils.sreachUserDataName(listofusers.listofusers,filer);
+                            if (lookup == null) {
+                                System.out.println("sorry user could not be found");
+                            }
+                            else
+                            {
+                                System.out.println("account found\n"+lookup);
+                            }
+                        }
+                    }
+
+                    break;
+                case 9: // don't care to implement yet
                             break;
-                default: System.out.println("Unknown response use 7 to get a list of  commands");
+                default: System.out.println("Unknown response use 9 to get a list of  commands");
 
             }
 
@@ -226,9 +280,12 @@ public class Main {
          * @return the users data that matches the id given if non matches the id given it will return null
          */
         public Userdata sreachUserData(Collection<Userdata> listuserdata, String id)
-
         {
             return  findByProperty(listuserdata, userdata -> id.equals(userdata.getId()));
+        }
+        public Userdata sreachUserDataName(Collection<Userdata> listuserdata, String username)
+        {
+            return  findByProperty(listuserdata, userdata -> username.equals(userdata.getFirstName()));
         }
     }
 
