@@ -82,10 +82,10 @@ public class Main {
         boolean newexit = false;
         boolean logincheck= false;
         int index=0;
+        System.out.println("hello and welcome to book-sim");
         while(!newexit)
         {
-            System.out.println("hello and welcome to book-sim");
-            System.out.println("0:clears out terminal");
+            System.out.println("\n0:clears out terminal");
             System.out.println("1: you can view all books in the library");
             System.out.println("2: you can view all books that are able to be checked out");
             System.out.println("3: you can get your user details/sign in");
@@ -117,8 +117,14 @@ public class Main {
 
             switch (x)
             {
-                case 0: System.out.println("\033[H\033[2J");
-                        System.out.flush();
+                case 0: final String os = System.getProperty("os.name");
+                        if (os.contains("Windows")){
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+                        }
+                        else{
+                            Runtime.getRuntime().exec("clear"); //unix
+                        }
                         break;
                 case 1:
                     System.out.println(avaibleBooks); //tostrings will deal with this
