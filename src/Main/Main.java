@@ -47,7 +47,7 @@ public class Main {
             userdata.setMasterid(id);
         }
 
-      /*  while (!exit)
+   /*    while (!exit)
         {
             System.out.println("would you like to view our books");
             userdata.CreateAccount();
@@ -65,6 +65,7 @@ public class Main {
             Scanner input = new Scanner(System.in);
             System.out.println("enter id to search from");
             String str = input.nextLine();
+
             Userdata account =var.sreachUserData(listofusers.listofusers, str );
             if (account==null)
             {
@@ -117,7 +118,8 @@ public class Main {
             switch (x)
             {
                 case 0: System.out.println("\033[H\033[2J");
-                        System.out.flush(); break;
+                        System.out.flush();
+                        break;
                 case 1:
                     System.out.println(avaibleBooks); //tostrings will deal with this
                     System.out.println(checked_outlist);//same as above
@@ -251,7 +253,7 @@ public class Main {
     static void forceQuit()
     {
         Runtime.getRuntime().exit(-1); //force quits the program need to make sure that file writers close
-        // going to use this if the program encounter a fatal error and needs to be shut down need to look into what happens when this encours
+        // going to use this if the program encounter a fatal error and needs to be shut down need to look into what happens when this occurs 
         // during a file write or read
     }
 
@@ -269,7 +271,7 @@ public class Main {
          * @return returns the userdata object
          */
         public  <T> T findByProperty(Collection<T> col, Predicate<T> filter) {
-            return col.stream().filter(filter).findFirst().orElse(null);
+            return col.stream().filter(filter).findFirst().orElse(null); //stream
         }
 
         /**
@@ -285,7 +287,7 @@ public class Main {
         }
         public Userdata sreachUserDataName(Collection<Userdata> listuserdata, String username)
         {
-            return  findByProperty(listuserdata, userdata -> username.equals(userdata.getFirstName()));
+            return  findByProperty(listuserdata, userdata -> username.equals(userdata.getFirstName())); //lambda expression
         }
     }
 
