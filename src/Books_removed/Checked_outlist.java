@@ -129,9 +129,11 @@ public class Checked_outlist {
 
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Checked_outlist{" +
+                "stringHashMap=" + stringHashMap +
+                '}';
+    }//going to change it to line by line print by iteration
 }
 //todo add this functionally to program

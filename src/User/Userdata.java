@@ -16,7 +16,6 @@ public class Userdata {
     private String password;
     private String firstname;
     private String lastname;
-
     /**
      * Userdata constructor is only here to set values to null
      */
